@@ -6,8 +6,13 @@ module Yath
 
     def initialize opts, &block
       @tabs = []
-      @block = instance_eval(&block)
       @current_path = opts[:current_path]
+      #@block = instance_eval(&block)
+      if block.arity == 1               # the arity() check
+        @block = block[self]            # argument expected, pass the object
+      else
+        @block = instance_eval(&block)  # no argument, use instance_eval()
+      end
     end
     
     def add_tab title, path, opts={}
@@ -21,18 +26,17 @@ module Yath
         else
           %Q(<li>#{link_to tab.title, tab.path, tab.opts}</li>)
         end
-      end.join(' ')+"</ul>".html_safe
+      end.join(' ')+"</ul>"
     end
 
     def do_ajax_tabs
-      a = ''
       "<ul>"+@tabs.map do |tab|
         if current_path == tab.path
           "<li>"+link_to(tab.title, "#current-tab", tab.opts)+"</li>"
         else
           "<li>"+link_to(tab.title, tab.path, tab.opts)+"</li>"
         end
-      end.join(' ')+"</ul>".html_safe
+      end.join(' ')+"</ul>"
     end
   end
 end
