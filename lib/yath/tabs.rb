@@ -12,8 +12,8 @@ module Yath
       #@block = instance_eval(&block)
       if block.arity == 1               # the arity() check
         @block = block[self]            # argument expected, pass the object
-      else
-        @block = instance_eval(&block)  # no argument, use instance_eval()
+      #else
+        #@block = instance_eval(&block)  # no argument, use instance_eval()
       end
     end
     
@@ -22,13 +22,14 @@ module Yath
     end
     
     def do_tabs
-      "<ul class=\"#{@class_name}\">"+@tabs.map do |tab|
+      lista = @tabs.map do |tab|
         if current_path == tab.path && tab.opts[:method] == "get"
-          %Q(<li class="#{@active}"><span>#{tab.title}</span></li>)
+          %Q(<li class="#{@active}"><a>#{tab.title}</a></li>)
         else
           %Q(<li>#{tab.link_to}</li>)
         end
-      end.join(' ')+"</ul>"
+      end.join(' ')
+      %Q(<ul class=\"#{@class_name}\">#{lista}</ul>)
     end
   end
 end

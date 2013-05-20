@@ -9,7 +9,13 @@ module Yath
     end
     
     def link_to
-      link_to(@title,@path,@opts)
+      %Q(<a href="#{@path}" #{get_attr_from_opts}>#{@title}</a>)
+    end
+    
+    def get_attr_from_opts
+      @opts.map do |k,v|
+        %Q(#{k}="#{v}")
+      end.join(' ')
     end
   end
 end
