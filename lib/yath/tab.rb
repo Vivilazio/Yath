@@ -14,7 +14,13 @@ module Yath
     
     def get_attr_from_opts
       @opts.map do |k,v|
-        %Q(#{k}="#{v}")
+        if k.to_s == "data"
+          v.map do |attr,value|
+            %Q(data-#{attr}="#{value}")
+          end.join(' ')
+        else
+          %Q(#{k}="#{v}")
+        end
       end.join(' ')
     end
   end
