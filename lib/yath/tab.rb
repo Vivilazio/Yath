@@ -5,7 +5,8 @@ module Yath
       @title = title
       @path = path
       @opts = opts
-      @opts.reverse_merge! method: "get"
+      @opts.reverse_merge! data: {}
+      @opts[:data].reverse_merge! method: "get"
     end
     
     def link_to

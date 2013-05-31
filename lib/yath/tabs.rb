@@ -23,7 +23,7 @@ module Yath
     
     def do_tabs
       lista = @tabs.map do |tab|
-        if current_path == tab.path && (!tab.opts[:data] || !tab.opts[:method] == "get")
+        if current_path == tab.path && (!tab.opts[:data] || tab.opts[:method] == "get")
           %Q(<li class="#{@active}"><a>#{tab.title}</a></li>)
         else
           %Q(<li>#{tab.link_to}</li>)
