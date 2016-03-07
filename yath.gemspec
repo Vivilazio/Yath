@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Alessio Caradossi"]
   s.email       = ["alessio@theeyes.org"]
   s.homepage    = ""
-  s.summary     = %q{Useful to create tabbed links}
+  s.summary     = %q{A gem for creating tabbed links}
   s.description = %q{Yet another tabs helper helps you to create your tabbed links using a simple ruby dsl }
 
   s.rubyforge_project = "yath"
