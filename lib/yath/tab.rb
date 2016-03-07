@@ -1,3 +1,4 @@
+require 'active_support/core_ext/hash'
 module Yath
   class Tab
     attr_accessor :title, :path, :opts
@@ -8,11 +9,11 @@ module Yath
       @opts.reverse_merge! data: {}
       @opts[:data].reverse_merge! method: "get"
     end
-    
+
     def link_to
       %Q(<a href="#{@path}" #{get_attr_from_opts}>#{@title}</a>)
     end
-    
+
     def get_attr_from_opts
       @opts.map do |k,v|
         if k.to_s == "data"

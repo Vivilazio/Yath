@@ -22,14 +22,14 @@ module Yath
     end
 
     def do_tabs
-      lista = @tabs.map do |tab|
-	if current_path == tab.path && (!tab.opts[:data] || !tab.opts[:data][:method] || tab.opts[:data][:method] == "get")
+      list = @tabs.map do |tab|
+        if current_path == tab.path && (!tab.opts[:data] || !tab.opts[:data][:method] || tab.opts[:data][:method] == "get")
           %Q(<li class="#{@active}">#{tab.link_to}</li>)
         else
           %Q(<li>#{tab.link_to}</li>)
         end
       end.join(' ')
-      %Q(<ul class="#{@class_name}">#{lista}</ul>)
+      %Q(<ul class="#{@class_name}">#{list}</ul>)
     end
   end
 end
