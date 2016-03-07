@@ -20,5 +20,4 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rails", "~> 4"
-  s.add_runtime_dependency "rails", "~> 4"
 end
